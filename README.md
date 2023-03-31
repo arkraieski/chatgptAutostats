@@ -25,4 +25,5 @@ here's an example with built-in data
 rgpt3::gpt3_authenticate("PATHTO/access_key.txt")
 library(chatgptAutostats)
 my_model <- chatgpt_lm(df = swiss, predict_col = "Examination")
+summary(my_model) # my_model is just a normal R "lm" class object so the normal S3 methods are available
 ```
