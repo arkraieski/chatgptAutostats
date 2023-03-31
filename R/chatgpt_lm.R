@@ -1,12 +1,14 @@
 #' Generate a prompt to get an lm() call from ChatGPT
 #' @export
+#' @param df a data.frame
+#' @param predict_col a string with the name of a variable in `df` to predict
 #' @import tibble
 #' @importFrom stats cor
 #' @importFrom utils capture.output
 chatgpt_lm_prompt <- function(df, predict_col){
   base_prompt<- "Hello ChatGPT, you will now play the role of an expert statistics assistant helping a user with a linear regression problem using the R statistical programming language. Your task, from which you are not allowed to deviate, is to use PHD level knowledge of linear regression (OLS), statistical correlations and interactions, R statistical computing, the `lm` function in R, and R's formula interface, along with impeccable statistical intuition, to generate a single line of plain text with just a call to R's `lm()` function to fit what you think will be an optimal linear model (including any interactions you think are worth including in the model) for the user's tibble `df`. Attempt to maximize Adjusted R-squared of the fitted model. The following information about the data and the desired model should be used to complete this task:"
 
-  if(!is.data.frame(df)) stop("df must be a data.frame", call. = FALSE)
+  if(!inherits(df, "data.frame")) stop("df must be a data.frame", call. = FALSE)
   if(!(predict_col %in% names(df))) stop("predict_col not in names(df)", call. = FALSE)
   t <- as_tibble(df) # so we use modern tibble methods
 
@@ -33,6 +35,8 @@ chatgpt_lm_prompt <- function(df, predict_col){
 
 
 #' Fit a linear regression model using ChatGPT
+#' @param df a data.frame
+#' @param predict_col a string with the name of a variable in `df` to predict
 #' @export
 #' @importFrom rgpt3 chatgpt_single
 chatgpt_lm <- function(df, predict_col){

@@ -6,6 +6,11 @@
 \usage{
 chatgpt_lm(df, predict_col)
 }
+\arguments{
+\item{df}{a data.frame}
+
+\item{predict_col}{a string with the name of a variable in \code{df} to predict}
+}
 \description{
 Fit a linear regression model using ChatGPT
 }
