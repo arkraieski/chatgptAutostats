@@ -42,6 +42,7 @@ chatgpt_lm <- function(df, predict_col){
                  temperature = 0.5,
                  max_tokens = 256,
   )
+  if(!grep("lm", response[[1]]$chatgpt_content)) stop(paste0("ChatGPT didn't give you an lm call", call. = FALSE))
   # this line of code is not particularly safe, but yolo
   eval(parse(text = response[[1]]$chatgpt_content))
 }
