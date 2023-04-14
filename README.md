@@ -11,15 +11,16 @@ The goal of chatgptAutostats is to fit models in R (and potentially query databa
 You can install the development version of chatgptAutostats like so:
 
 ``` r
+devtools::install_github("ben-aaron188/rgpt3")
 devtools::install_github("arkraieski/chatgptAutostats")
 ```
 
-It's not fully documented yet, this is a work in progress that may change rapidly and/or totally break. 
+This is a work-in-progress that may change rapidly and/or totally break. 
 
 
 Please use this package responsibly. Ideally, I think this package should help with model explainable, LLM-fit domain-expert models(linear and logistic regressions,  will be a major focus for this package). Please do not use this package as a "weapon of math destruction"
 
-here's an example with built-in data
+Here's an example with built-in data
 
 ``` r
 rgpt3::gpt3_authenticate("PATHTO/access_key.txt")
