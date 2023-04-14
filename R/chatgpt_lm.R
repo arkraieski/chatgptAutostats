@@ -19,7 +19,7 @@ chatgpt_lm_prompt <- function(df, predict_col){
   cor_output <- capture.output(print(cor(t)))
   cor_output <- paste(cor_output, collapse = "\n")
 
-  final_prompt <- sprintf("%s I want to use the column %s as the column to predict. The output of dim(df) is: %dx%d. Column names are: %s. The column classes are: %s. The output of summary(df) is: %s. The output of cor(df) is:\n%s. The tibble is called %s.",
+  final_prompt <- sprintf("%s I want to use the column %s as the column to predict. The output of dim(df) is: %dx%d. Column names are: %s. The column classes are: %s. The output of summary(df) is: %s. The output of cor(df) is:\n%s. The tibble is called %s. Remember that your reply should only contain the requested 'lm' call.",
                           base_prompt,
                           predict_col,
                           dim(t)[1],
